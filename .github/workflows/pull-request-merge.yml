@@ -13,7 +13,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: "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"
         branch: 'automated-pr-branch'
         title: 'Automated PR'
         body: 'This is an auto-generated PR for recent changes.'
@@ -28,4 +28,4 @@ jobs:
     - name: Merge pull request
       uses: pascalgn/automerge-action@v0.11.0
       env:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        GITHUB_TOKEN: "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"
