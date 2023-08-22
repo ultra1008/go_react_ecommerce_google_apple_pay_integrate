@@ -20,12 +20,17 @@ jobs:
         labels: 'auto-pr, automerge'
 
   auto_merge:
-    runs-on: ubuntu-latest
     needs: create_pull_request
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Setup merge configurations
+      run: |
+        git config --global user.name 'ultra1008'
+        git config --global user.email 'ultra921008@gmail.com'
+        git config --global pull.rebase false
     - name: Merge pull request
-      uses: pascalgn/automerge-action@v0.11.0
+      uses: pascalgn/automerge-action@v0.14.2
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
