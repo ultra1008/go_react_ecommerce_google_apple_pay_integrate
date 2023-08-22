@@ -20,8 +20,8 @@ jobs:
         labels: 'auto-pr'
 
   auto_merge:
+    runs-on: ubuntu-latest
     needs: create_pull_request
-    runs_on: ubuntu-latest
     steps:
     - name: Merge pull request
       uses: pascalgn/automerge-action@v0.14.2
