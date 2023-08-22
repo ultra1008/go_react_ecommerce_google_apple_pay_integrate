@@ -17,14 +17,15 @@ jobs:
         branch: 'automated-pr-branch'
         title: 'Automated PR'
         body: 'This is an auto-generated PR for recent changes.'
-        labels: 'auto-pr'
+        labels: 'auto-pr, automerge'
 
   auto_merge:
     runs-on: ubuntu-latest
     needs: create_pull_request
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Merge pull request
-      uses: pascalgn/automerge-action@v0.14.2
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        merge-method: 'squash'
+      uses: pascalgn/automerge-action@v0.11.0
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
